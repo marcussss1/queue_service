@@ -2,14 +2,15 @@ package usecase
 
 import (
 	"context"
-	"github.com/marcussss1/queue_service/internal/models"
-	"github.com/marcussss1/queue_service/internal/pkg/e"
-	"github.com/marcussss1/queue_service/internal/tasks/repository"
-	"github.com/stretchr/testify/require"
 	"runtime"
 	"sync"
 	"testing"
 	"time"
+
+	"github.com/marcussss1/queue_service/internal/models"
+	"github.com/marcussss1/queue_service/internal/pkg/e"
+	"github.com/marcussss1/queue_service/internal/tasks/repository"
+	"github.com/stretchr/testify/require"
 )
 
 // 1 воркер, 1 задача, проверяем, что она успешно выполнилась

@@ -2,12 +2,13 @@ package repository
 
 import (
 	"context"
+	"sync"
+	"time"
+
 	"github.com/marcussss1/queue_service/internal/models"
 	"github.com/marcussss1/queue_service/internal/pkg/e"
 	"github.com/marcussss1/queue_service/internal/pkg/utils"
 	desc "github.com/marcussss1/queue_service/internal/tasks"
-	"sync"
-	"time"
 )
 
 type repository struct{}

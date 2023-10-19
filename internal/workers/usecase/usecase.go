@@ -4,11 +4,12 @@ import (
 	"context"
 	"errors"
 	"fmt"
+	"time"
+
 	"github.com/marcussss1/queue_service/internal/models"
 	"github.com/marcussss1/queue_service/internal/pkg/e"
 	"github.com/marcussss1/queue_service/internal/tasks"
 	log "github.com/sirupsen/logrus"
-	"time"
 )
 
 type usecase struct {

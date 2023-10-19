@@ -2,10 +2,11 @@ package usecase
 
 import (
 	"context"
-	"github.com/marcussss1/queue_service/internal/tasks/repository"
-	"github.com/stretchr/testify/require"
 	"testing"
 	"time"
+
+	"github.com/marcussss1/queue_service/internal/tasks/repository"
+	"github.com/stretchr/testify/require"
 )
 
 // проверяем что функция правильно работает

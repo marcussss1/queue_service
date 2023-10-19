@@ -1,0 +1,153 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "description": "Server API for Queue Service Application",
+        "title": "Queue API",
+        "contact": {
+            "name": "Queue API Support",
+            "email": "danilakalash60@gmail.com"
+        },
+        "version": "1.0.1"
+    },
+    "host": "localhost:8080",
+    "basePath": "/",
+    "paths": {
+        "/api/v1/append_task": {
+            "post": {
+                "description": "Append Task",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Tasks"
+                ],
+                "summary": "Append Task",
+                "parameters": [
+                    {
+                        "description": "Task",
+                        "name": "data",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/models.AppendTaskRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Created",
+                        "schema": {
+                            "$ref": "#/definitions/models.Task"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {}
+                    }
+                }
+            }
+        },
+        "/api/v1/tasks": {
+            "get": {
+                "description": "Get Tasks",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Tasks"
+                ],
+                "summary": "Get Tasks",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/models.Task"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "models.AppendTaskRequest": {
+            "type": "object",
+            "properties": {
+                "I": {
+                    "description": "интервал в секундах между итерациями",
+                    "type": "number"
+                },
+                "TTL": {
+                    "description": "время хранения результата в секундах",
+                    "type": "number"
+                },
+                "d": {
+                    "description": "дельта между элементами последовательности",
+                    "type": "number"
+                },
+                "n": {
+                    "description": "количество элементов",
+                    "type": "integer"
+                },
+                "n1": {
+                    "description": "стартовое значение",
+                    "type": "number"
+                }
+            }
+        },
+        "models.Task": {
+            "type": "object",
+            "properties": {
+                "I": {
+                    "description": "интервал в секундах между итерациями",
+                    "type": "number"
+                },
+                "TTL": {
+                    "description": "время хранения результата в секундах",
+                    "type": "number"
+                },
+                "completed_at": {
+                    "description": "время окончания задачи",
+                    "type": "string"
+                },
+                "created_at": {
+                    "description": "время постановки задачи",
+                    "type": "string"
+                },
+                "current_iteration": {
+                    "description": "текущая итерация",
+                    "type": "integer"
+                },
+                "d": {
+                    "description": "дельта между элементами последовательности",
+                    "type": "number"
+                },
+                "id": {
+                    "description": "номер в очереди",
+                    "type": "integer"
+                },
+                "n": {
+                    "description": "количество элементов",
+                    "type": "integer"
+                },
+                "n1": {
+                    "description": "стартовое значение",
+                    "type": "number"
+                },
+                "started_at": {
+                    "description": "время старта задачи",
+                    "type": "string"
+                },
+                "status": {
+                    "description": "статус: В процессе/В очереди/Завершена",
+                    "type": "integer"
+                }
+            }
+        }
+    }
+}

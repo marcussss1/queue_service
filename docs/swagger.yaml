@@ -1,0 +1,106 @@
+basePath: /
+definitions:
+  models.AppendTaskRequest:
+    properties:
+      I:
+        description: интервал в секундах между итерациями
+        type: number
+      TTL:
+        description: время хранения результата в секундах
+        type: number
+      d:
+        description: дельта между элементами последовательности
+        type: number
+      "n":
+        description: количество элементов
+        type: integer
+      n1:
+        description: стартовое значение
+        type: number
+    type: object
+  models.Task:
+    properties:
+      I:
+        description: интервал в секундах между итерациями
+        type: number
+      TTL:
+        description: время хранения результата в секундах
+        type: number
+      completed_at:
+        description: время окончания задачи
+        type: string
+      created_at:
+        description: время постановки задачи
+        type: string
+      current_iteration:
+        description: текущая итерация
+        type: integer
+      d:
+        description: дельта между элементами последовательности
+        type: number
+      id:
+        description: номер в очереди
+        type: integer
+      "n":
+        description: количество элементов
+        type: integer
+      n1:
+        description: стартовое значение
+        type: number
+      started_at:
+        description: время старта задачи
+        type: string
+      status:
+        description: 'статус: В процессе/В очереди/Завершена'
+        type: integer
+    type: object
+host: localhost:8080
+info:
+  contact:
+    email: danilakalash60@gmail.com
+    name: Queue API Support
+  description: Server API for Queue Service Application
+  title: Queue API
+  version: 1.0.1
+paths:
+  /api/v1/append_task:
+    post:
+      consumes:
+      - application/json
+      description: Append Task
+      parameters:
+      - description: Task
+        in: body
+        name: data
+        required: true
+        schema:
+          $ref: '#/definitions/models.AppendTaskRequest'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/models.Task'
+        "500":
+          description: Internal Server Error
+          schema: {}
+      summary: Append Task
+      tags:
+      - Tasks
+  /api/v1/tasks:
+    get:
+      consumes:
+      - application/json
+      description: Get Tasks
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.Task'
+      summary: Get Tasks
+      tags:
+      - Tasks
+swagger: "2.0"
